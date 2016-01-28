@@ -2,7 +2,54 @@
 - main: https://webpack.github.io
 
 ## Installation
-# node and npm
+#pre
+# npm
+- karma, tsd, tslint
+
+```
+  npm init
+  npm install tsd tslint --save-dev
+  npm install angular angular-route bootstrap --save-dev
+  npm install 
+  - style-loader css-loader sass-loader 
+  - babel-loader ts-loader 
+  - raw-loader file-loader 
+  --save-dev
+```
+
+- config
+
+```
+  tsd init
+  tsd install angular --save-dev
+   
+```
+
+## Project structure
+
+```
+  .gitignore
+  .karma.conf.js
+  .README.md
+  .tsconfig.json
+  tsd.json
+  tslint.json
+  webpack.config.js
+  - src
+    index.d.ts
+    - AppModule
+      AppModule.ts                // load all modules
+      AppModule.html
+    - SampleModule
+      SampleModule.ts
+      - PageDirective
+        PageController.ts
+        PageDirective.ts
+        PageTemplate.html
+  - typings
+```
+
+## Files
 - package.json
 
 ```json
