@@ -4,18 +4,26 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "tsd install && npm install && webpack --config webpack.dev.js --watch --NODE_ENV=dev"
+    "start": "tsd install && npm install && webpack --config webpack.dev.js --watch --NODE_ENV=dev"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "angular": "^1.4.9",
+    "angular-formly": "^7.5.0",
+    "angular-formly-templates-bootstrap": "^6.2.0",
     "angular-route": "^1.4.9",
+    "api-check": "^7.5.5",
+    "babel": "^6.3.26",
     "babel-core": "^6.4.5",
     "babel-loader": "^6.2.1",
     "bootstrap": "^3.3.6",
+    "browser-sync": "^2.11.1",
+    "browser-sync-webpack-plugin": "^1.0.1",
+    "compression-webpack-plugin": "^0.3.0",
     "css-loader": "^0.23.1",
     "file-loader": "^0.8.5",
+    "html-webpack-plugin": "^2.7.2",
     "jshint": "^2.9.1",
     "jshint-loader": "^0.8.3",
     "node-sass": "^3.4.2",

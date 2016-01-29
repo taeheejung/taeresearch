@@ -4,7 +4,7 @@
 import "../pimco.pacQueue.sample/module.ts";
 
 // import third party libs
-import "angular";
+import * as angular from "angular";
 
 // import css, font..
 require("bootstrap/dist/css/bootstrap.css");
@@ -15,4 +15,4 @@ angular.bootstrap(document, ["pimco.pacQueue.app"], {
     strictDi: true
 });
 
-console.log("pacQueue.app");
+console.log("pacQueue.app1");

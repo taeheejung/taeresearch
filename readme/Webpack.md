@@ -13,7 +13,10 @@
   npm install 
   - style-loader css-loader sass-loader 
   - babel-loader ts-loader 
-  - raw-loader file-loader 
+  - raw-loader file-loader
+  - browser-sync browser-sync-webpack-plugin
+  - html-webpack-plugin 
+
   --save-dev
 ```
 
@@ -78,3 +81,7 @@
 ```
 
 
+### Browser Sync
+- BrowserSync
+- Liveload
+- webpack-dev-server

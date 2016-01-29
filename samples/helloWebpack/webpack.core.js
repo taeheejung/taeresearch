@@ -1,40 +1,38 @@
 var path = require("path");
-var webpack = require('webpack');
 var BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var CompressionPlugin = require("compression-webpack-plugin");
-var ClosureCompilerPlugin = require('webpack-closure-compiler');
 
 module.exports = function (options) {
     var app = {
         source: {
-            path: "./src/pimco.pacQueue.app",
-            entry: "module.ts",
-            template: path.join( Path, "index.html")
+            context: path.join(__dirname, "src/pimco.pacQueue.app"),
+            entry: "./module.ts",
+            template: "index.html"
         },
         output: {
-            path: options.Dev ? "./dev" : "./dist",
+            path: path.join(__dirname, options.Dev ? "./dev" : "./dist"),
             port: 3000 
         }
     };
 
     var config = {
-        context: app.source.Path,
+        context: app.source.context,
         entry: app.source.entry,
         output: {
             filename: "bundle.js",
-            path: app.output.Path
+            path: app.output.path
         },
 
         resolve: {
-            moduleDirectories: ["node_modules", "bower_components", "web_modules"],
+            moduleDirectories: ["node_modules"],
             extensions: ["", '.webpack.js', '.web.js', ".js", "jsx", ".ts", ".tsx"]
         },
 
         module: {
             loaders: [
                 { test: /\.css$/, loader: "style!css" },
-                { test: /\.tsx?$/, loader: "babel-loader!ts-loader" },
+                { test: /\.tsx?$/, loader: "ts-loader" },
                 { test: /\.scss$/, loader: 'style!css!sass' },
                 { test: /\.html$/, loader: 'raw' },
                 { test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'file-loader' },
@@ -45,21 +43,23 @@ module.exports = function (options) {
     };
 
     if (options.Dev === true) {
+        config.watch = true;
+        config.devtool = 'source-map';
+        config.devServer = {
+            contentBase: app.output.path
+        };
+
         var browserSync = new BrowserSyncPlugin({
             host: 'localhost',
             port: app.output.port,
             server: {
-                baseDir: app.output.Path
+                baseDir: app.output.path
             },
             ui: false,
             online: false,
             notify: false
         });
-        config.devtool = 'source-map';
         config.plugins.push(browserSync);
-        config.devServer = {
-            contentBase: app.output.path
-        };
         config.plugins.push(new HtmlWebpackPlugin({
             template: app.source.template,
             inject: 'body',
