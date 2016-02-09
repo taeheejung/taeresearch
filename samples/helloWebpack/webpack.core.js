@@ -1,19 +1,27 @@
 var path = require("path");
+var webpack = require("webpack");
 var BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var CompressionPlugin = require("compression-webpack-plugin");
+
 
 module.exports = function (options) {
     var app = {
         source: {
             context: path.join(__dirname, "src/pimco.pacQueue.app"),
-            entry: "./module.ts",
+            entry: "./index.ts",
             template: "index.html"
         },
         output: {
             path: path.join(__dirname, options.Dev ? "./dev" : "./dist"),
             port: 3000 
         }
+        // ,
+        // globals:{
+        //     $: "jquery",
+        //     jQuery: "jquery",
+        //     "window.jQuery": "jquery"     
+        // }
     };
 
     var config = {
@@ -23,10 +31,10 @@ module.exports = function (options) {
             filename: "bundle.js",
             path: app.output.path
         },
-
         resolve: {
-            moduleDirectories: ["node_modules"],
-            extensions: ["", '.webpack.js', '.web.js', ".js", "jsx", ".ts", ".tsx"]
+            root: path.resolve(__dirname),
+            extensions: ["", '.webpack.js', '.web.js', ".js", "jsx", ".ts", ".tsx"],
+            modulesDirectories: ['node_modules']
         },
 
         module: {

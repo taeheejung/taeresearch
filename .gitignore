@@ -1,5 +1,5 @@
 .vscode
-node-modules
+node_modules
 obj
 .vs
 packages

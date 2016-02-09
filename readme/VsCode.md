@@ -2,6 +2,14 @@
 ## Reference
 https://code.visualstudio.com/Docs/editor/codebasics
 
+##Shortcut 
+| KEY | content |           
+|-----|---------|-------------|
+| ^@ Down | Insert Cursor Below |
+| ^@ UP   | Insert Cursor Above   |
+| ^ D     | Insert Cursor on next match|
+| ^ F2    | Insert Cursor on all matches|
+
 ## Editor
 ### Layout
 - ^b: toggle sidebar
